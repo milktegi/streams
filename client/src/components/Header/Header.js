@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import GoogleAuth from '../Auth/GoogleAuth';
 
 const Header = () => {
 	return (
@@ -20,6 +21,7 @@ const Header = () => {
           <li><Link to="/stream/delete">스트리밍 삭제</Link></li>
           <li><Link to="/stream/show">스트리밍 보기</Link></li>
           {/* <li><Link to="login.html">로그인</Link></li> */}
+					<GoogleAuth/>
         </ul>
 				</div>
 				</div>
