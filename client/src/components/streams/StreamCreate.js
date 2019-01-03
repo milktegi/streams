@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends Component {
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
+		console.log(meta);
     return (
       <div className="row">
         <div className="col s12">
@@ -15,6 +16,7 @@ class StreamCreate extends Component {
               <i className="material-icons prefix">mode_edit</i>
               <label>{label}</label>
               <input {...input} />
+							<div>{meta.error}</div>
             </div>
           </div>
         </div>
@@ -51,6 +53,18 @@ class StreamCreate extends Component {
   }
 }
 
+const validate = formValues => {
+	const errors = {}
+	if(!formValues.title) {
+		errors.title = '제목을 입력해주세요'
+	}
+	if(!formValues.description){
+		errors.description = '설명을 입력해주세요'
+	}
+	return errors;
+};
+
 export default reduxForm({
-  form: 'streamCreate'
+  form: 'streamCreate',
+	validate
 })(StreamCreate);
