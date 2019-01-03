@@ -5,18 +5,34 @@ import React, { Component } from 'react';
 // 폼 수입
 import { Field, reduxForm } from 'redux-form';
 
+
+ 
 class StreamCreate extends Component {
-  renderInput({ input, label, meta }) {
+	renderError({ error, touched }) {
+	 if(touched && error) {
+		 return (
+		 <span className="helper-text red-text" data-error="wrong" data-success="right">
+			 {error}
+		 </span>
+		 )
+	 }
+ }
+
+  renderInput = ({ input, label, meta }) => {
 		console.log(meta);
+		// property touched
     return (
       <div className="row">
         <div className="col s12">
           <div className="row">
             <div className="input-field col s12">
-              <i className="material-icons prefix">mode_edit</i>
-              <label>{label}</label>
-              <input {...input} />
-							<div>{meta.error}</div>
+             <i className="material-icons prefix">account_circle</i>
+              <label for="icon_prefix">{label}</label>
+							
+              <input {...input} 
+							autoComplete="off"
+							/>
+							<div>{this.renderError(meta)}</div>
             </div>
           </div>
         </div>
