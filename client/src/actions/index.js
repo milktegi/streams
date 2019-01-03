@@ -2,7 +2,7 @@
 // axios 인스턴스 수입
 import streams from '../apis/streams';
 
-import { SIGN_IN, SIGN_OUT } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_STREAM } from './types';
 
 // when got a signal of
 // signIn attempted,
@@ -22,4 +22,8 @@ export const signOut = () => {
 
 export const createStream = formValues => async dispatch => {
   const response = streams.post('/streams', formValues);
+  dispatch({ 
+    type: CREATE_STREAM,
+    payload: response.data
+  })
 };

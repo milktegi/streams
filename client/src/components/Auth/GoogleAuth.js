@@ -51,9 +51,23 @@ class GoogleAuth extends React.Component {
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn) {
-      return <button onClick={this.onSignOutClick}>로그아웃</button>;
+      return (
+        <button
+          className="waves-effect waves-light btn deep-orange"
+          onClick={this.onSignOutClick}
+        >
+          로그아웃
+        </button>
+      );
     } else {
-      return <button onClick={this.onSignInClick}>로그인</button>;
+      return (
+        <button
+          className="waves-effect waves-light btn blue-text yellow lighten3"
+          onClick={this.onSignInClick}
+        >
+          로그인
+        </button>
+      );
     }
   }
 

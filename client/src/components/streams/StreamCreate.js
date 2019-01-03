@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 // 폼 수입
 import { Field, reduxForm } from 'redux-form';
 
+// 리덕스 푹 
+import { connect } from 'react-redux';
+import { createStream } from '../../actions/index';
+
 
  
 class StreamCreate extends Component {
@@ -62,7 +66,8 @@ class StreamCreate extends Component {
           component={this.renderInput}
           label="ㄴ"
         />
-				<a className="waves-effect waves-light btn">Submit</a>
+				<button
+         className="waves-effect waves-light btn">Submit</button>
       </form>
 			
     );
@@ -80,7 +85,10 @@ const validate = formValues => {
 	return errors;
 };
 
-export default reduxForm({
+
+const formWrapped = reduxForm({
   form: 'streamCreate',
 	validate
 })(StreamCreate);
+
+export default connect(null, { createStream })(formWrapped);
