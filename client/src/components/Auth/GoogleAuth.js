@@ -17,17 +17,42 @@ class GoogleAuth extends React.Component {
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
           this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          // 이벤트 리스너 등록
+          this.auth.isSignedIn.listen(this.onAuthChange);
         });
     });
   }
 
+  // 상태 업데이트 함수 
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
+
+	// 로그인아웃 이벤트 핸들러
+
+	onSignIn = () => {
+		this.auth.signIn();
+	}
+
+	onSignOut = () => {	
+		this.auth.signOut();
+	}
+
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      return <div>로그인</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      return <div>로그아웃</div>;
+      return (
+        <button onClick={this.onSignOut}>
+					로그아웃
+				</button>
+      );
     } else {
-      return <div>로그인 아직</div>;
+      return (
+        <button onClick={this.onSignIn}>
+					로그인
+				</button>
+      );
     }
   }
 
