@@ -5,16 +5,38 @@ import React, { Component } from 'react';
 // 폼 수입
 import { Field, reduxForm } from 'redux-form';
 
+// 리덕스 푹 
+import { connect } from 'react-redux';
+import { createStream } from '../../actions/index';
+
+
+ 
 class StreamCreate extends Component {
-  renderInput({ input, label }) {
+	renderError({ error, touched }) {
+	 if(touched && error) {
+		 return (
+		 <span className="helper-text red-text" data-error="wrong" data-success="right">
+			 {error}
+		 </span>
+		 )
+	 }
+ }
+
+  renderInput = ({ input, label, meta }) => {
+		console.log(meta);
+		// property touched
     return (
       <div className="row">
         <div className="col s12">
           <div className="row">
             <div className="input-field col s12">
-              <i className="material-icons prefix">mode_edit</i>
-              <label>{label}</label>
-              <input {...input} />
+             <i className="material-icons prefix">account_circle</i>
+              <label for="icon_prefix">{label}</label>
+							
+              <input {...input} 
+							autoComplete="off"
+							/>
+							<div>{this.renderError(meta)}</div>
             </div>
           </div>
         </div>
@@ -44,13 +66,29 @@ class StreamCreate extends Component {
           component={this.renderInput}
           label="ㄴ"
         />
-				<a className="waves-effect waves-light btn">Submit</a>
+				<button
+         className="waves-effect waves-light btn">Submit</button>
       </form>
 			
     );
   }
 }
 
-export default reduxForm({
-  form: 'streamCreate'
+const validate = formValues => {
+	const errors = {}
+	if(!formValues.title) {
+		errors.title = '제목을 입력해주세요'
+	}
+	if(!formValues.description){
+		errors.description = '설명을 입력해주세요'
+	}
+	return errors;
+};
+
+
+const formWrapped = reduxForm({
+  form: 'streamCreate',
+	validate
 })(StreamCreate);
+
+export default connect(null, { createStream })(formWrapped);
