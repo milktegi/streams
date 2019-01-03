@@ -18,7 +18,8 @@ class GoogleAuth extends React.Component {
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
-          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          // this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.onAuthChange(this.auth.isSignedIn.get());
           // 이벤트 리스너 등록
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
@@ -26,11 +27,11 @@ class GoogleAuth extends React.Component {
   }
 
   // 상태 업데이트 함수 
-  // 업데이트될 때 마다 액션크리에이터 
+  // 유저 로그인유무가 들어올 때 마다 액션크리에이터 콜 
   onAuthChange = (isSignedIn) => {
     // this.setState({ isSignedIn: this.auth.isSignedIn.get() });
     if(isSignedIn) {
-      this.props.signIn();
+      this.props.signIn(this.auth.currentUser.get().getId());
     } else {
       this.props.signOut();
     }
@@ -47,9 +48,9 @@ class GoogleAuth extends React.Component {
 	}
 
   renderAuthButton() {
-    if (this.state.isSignedIn === null) {
+    if (this.props.isSignedIn === null) {
       return null;
-    } else if (this.state.isSignedIn) {
+    } else if (this.props.isSignedIn) {
       return (
         <button onClick={this.onSignOutClick}>
 					로그아웃
@@ -69,8 +70,12 @@ class GoogleAuth extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { isSignedIn: state.auth.isSignedIn };
+}
+
 export default connect(
   // state, action 
-  null, 
+  mapStateToProps, 
   { signIn, signOut }
 )(GoogleAuth);
