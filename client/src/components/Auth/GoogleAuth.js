@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { signIn, signOut } from '../../actions/index'
 
 class GoogleAuth extends React.Component {
   state = {
@@ -24,17 +26,23 @@ class GoogleAuth extends React.Component {
   }
 
   // 상태 업데이트 함수 
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  // 업데이트될 때 마다 액션크리에이터 
+  onAuthChange = (isSignedIn) => {
+    // this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+    if(isSignedIn) {
+      this.props.signIn();
+    } else {
+      this.props.signOut();
+    }
   };
 
 	// 로그인아웃 이벤트 핸들러
 
-	onSignIn = () => {
+	onSignInClick = () => {
 		this.auth.signIn();
 	}
 
-	onSignOut = () => {	
+	onSignOutClick = () => {	
 		this.auth.signOut();
 	}
 
@@ -43,13 +51,13 @@ class GoogleAuth extends React.Component {
       return null;
     } else if (this.state.isSignedIn) {
       return (
-        <button onClick={this.onSignOut}>
+        <button onClick={this.onSignOutClick}>
 					로그아웃
 				</button>
       );
     } else {
       return (
-        <button onClick={this.onSignIn}>
+        <button onClick={this.onSignInClick}>
 					로그인
 				</button>
       );
@@ -61,4 +69,8 @@ class GoogleAuth extends React.Component {
   }
 }
 
-export default GoogleAuth;
+export default connect(
+  // state, action 
+  null, 
+  { signIn, signOut }
+)(GoogleAuth);
