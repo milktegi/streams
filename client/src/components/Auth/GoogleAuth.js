@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn, signOut } from '../../actions/index'
+import { signIn, signOut } from '../../actions/index';
 
 class GoogleAuth extends React.Component {
   state = {
@@ -26,42 +26,34 @@ class GoogleAuth extends React.Component {
     });
   }
 
-  // 상태 업데이트 함수 
-  // 유저 로그인유무가 들어올 때 마다 액션크리에이터 콜 
-  onAuthChange = (isSignedIn) => {
+  // 상태 업데이트 함수
+  // 유저 로그인유무가 들어올 때 마다 액션크리에이터 콜
+  onAuthChange = isSignedIn => {
     // this.setState({ isSignedIn: this.auth.isSignedIn.get() });
-    if(isSignedIn) {
+    if (isSignedIn) {
       this.props.signIn(this.auth.currentUser.get().getId());
     } else {
       this.props.signOut();
     }
   };
 
-	// 로그인아웃 이벤트 핸들러
+  // 로그인아웃 이벤트 핸들러
 
-	onSignInClick = () => {
-		this.auth.signIn();
-	}
+  onSignInClick = () => {
+    this.auth.signIn();
+  };
 
-	onSignOutClick = () => {	
-		this.auth.signOut();
-	}
+  onSignOutClick = () => {
+    this.auth.signOut();
+  };
 
   renderAuthButton() {
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn) {
-      return (
-        <button onClick={this.onSignOutClick}>
-					로그아웃
-				</button>
-      );
+      return <button onClick={this.onSignOutClick}>로그아웃</button>;
     } else {
-      return (
-        <button onClick={this.onSignInClick}>
-					로그인
-				</button>
-      );
+      return <button onClick={this.onSignInClick}>로그인</button>;
     }
   }
 
@@ -72,10 +64,10 @@ class GoogleAuth extends React.Component {
 
 const mapStateToProps = state => {
   return { isSignedIn: state.auth.isSignedIn };
-}
+};
 
 export default connect(
-  // state, action 
-  mapStateToProps, 
+  // state, action
+  mapStateToProps,
   { signIn, signOut }
 )(GoogleAuth);

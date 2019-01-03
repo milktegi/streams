@@ -22,21 +22,31 @@ class StreamCreate extends Component {
     );
   }
 
+	// 이벤트 
+	onSubmit(formValues){
+		// event.preventDefault();
+		console.log(formValues);
+	}
+
   render() {
     // console.log(this.props);
     return (
-      <form>
+      <form
+			onSubmit={this.props.handleSubmit(this.onSubmit)}
+			>
         <Field
           name="title"
           component={this.renderInput}
-          label="제목을 입력하세요"
+          label="ㅇ"
         />
         <Field
           name="description"
           component={this.renderInput}
-          label="설명을 추가할 수 있습니다"
+          label="ㄴ"
         />
+				<a className="waves-effect waves-light btn">Submit</a>
       </form>
+			
     );
   }
 }
