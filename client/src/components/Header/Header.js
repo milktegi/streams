@@ -15,13 +15,14 @@ const Header = () => {
           <i className="material-icons">menu</i>
         </Link>
         <ul className="right hide-on-med-and-down">
+					<li><GoogleAuth/></li>	
           <li className="active"><Link to="/"></Link></li>
           <li><Link to="/stream/new">채널 생성</Link></li>
           <li><Link to="/stream/edit">스트리밍 수정</Link></li>
           <li><Link to="/stream/delete">스트리밍 삭제</Link></li>
           <li><Link to="/stream/show">스트리밍 보기</Link></li>
           {/* <li><Link to="login.html">로그인</Link></li> */}
-					<GoogleAuth/>
+				
         </ul>
 				</div>
 				</div>
