@@ -20,6 +20,18 @@
       "description": "this stream was created by me!",
       "userId": "108322165637413036181",
       "id": 4
+    },
+    {
+      "title": "Unexpected behaviour",
+      "description": "didn't expect that!",
+      "userId": "108322165637413036181",
+      "id": 5
+    },
+    {
+      "title": "Unexpected behaviour",
+      "description": "didn't expect that!",
+      "userId": "108322165637413036181",
+      "id": 6
     }
   ]
 }
