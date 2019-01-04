@@ -30,10 +30,10 @@ class StreamList extends React.Component {
       return (
         <div style={{ textAlign: 'right' }}>
           <Link
-            to="/streams/new"
+            to="/stream/new"
             className="btn-floating btn-large waves-effect waves-light red"
           >
-            <i class="material-icons">add</i>
+            <i className="material-icons">add</i>
           </Link>
         </div>
       );

@@ -1,6 +1,9 @@
 // 상태 관리
-// axios 인스턴스 수입
+// axios 인스턴스
 import streams from '../apis/streams';
+
+// history 인스턴스 
+import history from '../history';
 
 import {
   SIGN_IN,
@@ -36,6 +39,10 @@ export const createStream = formValues => async (dispatch, getState) => {
     type: CREATE_STREAM,
     payload: response.data
   });
+  // immediately after successfully create stream, 
+  // navigate to user to '/'
+  history.push('/');
+
 };
 
 export const fetchStreams = () => async dispatch => {
