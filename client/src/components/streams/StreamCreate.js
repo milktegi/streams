@@ -33,7 +33,7 @@ class StreamCreate extends Component {
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">account_circle</i>
-              <label for="icon_prefix">{label}</label>
+              <label htmlFor="icon_prefix">{label}</label>
               <input {...input} autoComplete="off" />
               <div>{this.renderError(meta)}</div>
             </div>
