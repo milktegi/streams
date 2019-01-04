@@ -1,43 +1,10 @@
 {
   "streams": [
     {
-      "title": "안녕",
-      "description": "안경",
+      "title": "나에게만~~",
+      "description": "준비된 선물 같아",
+      "userId": "101457345574042051274",
       "id": 1
-    },
-    {
-      "title": "너 지금 어디야",
-      "description": "지금 제주도야",
-      "id": 2
-    },
-    {
-      "title": "손 끝이 시리더니",
-      "description": "벌써 봄이 왔네",
-      "id": 3
-    },
-    {
-      "title": "I created this stream ",
-      "description": "this stream was created by me!",
-      "userId": "108322165637413036181",
-      "id": 4
-    },
-    {
-      "title": "Unexpected behaviour",
-      "description": "didn't expect that!",
-      "userId": "108322165637413036181",
-      "id": 5
-    },
-    {
-      "title": "Unexpected behaviour",
-      "description": "didn't expect that!",
-      "userId": "108322165637413036181",
-      "id": 6
-    },
-    {
-      "title": "Programmatic navigation ",
-      "description": "you should not see this on the form page!!!",
-      "userId": "108322165637413036181",
-      "id": 7
     }
   ]
 }

@@ -14,12 +14,14 @@ class StreamList extends React.Component {
     if (stream.userId === this.props.currentUserId) {
       return (
         <div>
-          {/* <button className="approve green-text"> */}
-          <button className="waves-effect waves-light btn green">
+          <Link 
+          to={`/streams/edit/${stream.id}`}
+          className="waves-effect waves-light btn green">
             수정
-          </button>{' '}
+          </Link>{' '}
           {/* <button className="deny red-text"> */}
-          <button className="waves-effect waves-light btn red">삭제</button>
+          <button 
+          className="waves-effect waves-light btn red">삭제</button>
         </div>
       );
     }
@@ -30,7 +32,7 @@ class StreamList extends React.Component {
       return (
         <div style={{ textAlign: 'right' }}>
           <Link
-            to="/stream/new"
+            to="/streams/new"
             className="btn-floating btn-large waves-effect waves-light red"
           >
             <i className="material-icons">add</i>
