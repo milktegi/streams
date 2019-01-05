@@ -24,7 +24,7 @@ class StreamForm extends Component {
         <div className="col s12">
           <div className="row">
             <div className="input-field col s12">
-              <i className="material-icons prefix">account_circle</i>
+              <i className="material-icons prefix">create</i>
               <label htmlFor="icon_prefix">{label}</label>
               <input {...input} autoComplete="off" />
               <div>{this.renderError(meta)}</div>
@@ -46,8 +46,8 @@ class StreamForm extends Component {
     // console.log(this.props);
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="title" component={this.renderInput} label="ㅇ" />
-        <Field name="description" component={this.renderInput} label="ㄴ" />
+        <Field name="title" component={this.renderInput} label="제목 입력" />
+        <Field name="description" component={this.renderInput} label="설명두" />
         <button className="waves-effect waves-light btn">Submit</button>
       </form>
     );
@@ -57,10 +57,10 @@ class StreamForm extends Component {
 const validate = formValues => {
   const errors = {};
   if (!formValues.title) {
-    errors.title = '제목을 입력해주세요';
+    errors.title = '제목 입력 까묵지마ㅇㅇ';
   }
   if (!formValues.description) {
-    errors.description = '설명을 입력해주세요';
+    errors.description = '설명두';
   }
   return errors;
 };

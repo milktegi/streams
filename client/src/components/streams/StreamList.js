@@ -51,7 +51,7 @@ class StreamList extends React.Component {
               <div className="card-content">
                 <div className="row">
                   <div className="col s12 m6">
-                    <i className="material-icons prefix">camera_roll</i>
+                    <i className="material-icons prefix">laptop_mac</i>
                     <span className="card-title">스트리밍 리스트</span>
 
                     <div className="col s12 m6" key={stream.id}>
