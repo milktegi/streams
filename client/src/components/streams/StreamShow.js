@@ -1,13 +1,33 @@
-// 일단은 함수형으로 
-
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchStream } from '../../actions';
 
-const StreamShow = () => {
-	return(
-		<div>
-			나는 streamShow이당ㅎㅎㅎ 
-		</div>
-	)
+class StreamShow extends React.Component {
+
+	componentDidMount(){
+		this.props.fetchStream(this.props.match.params.id);
+	} 
+
+  render() {
+
+		const { title, description } = this.props.stream;
+		if(!this.props.stream){
+			return <div>Loading...</div>
+		}
+    return (
+			<div>
+				<h1>{title}</h1>
+				<h5>{description}</h5>
+			</div>
+		);
+  }
 }
 
-export default StreamShow;
+const mapStateToProps = (state, ownProps) => {
+	return { stream: state.streams[ownProps.match.params.id]};
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchStream }
+)(StreamShow);
