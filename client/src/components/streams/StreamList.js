@@ -19,9 +19,10 @@ class StreamList extends React.Component {
           className="waves-effect waves-light btn green">
             수정
           </Link>{' '}
-          {/* <button className="deny red-text"> */}
-          <button 
-          className="waves-effect waves-light btn red">삭제</button>
+          {/* <L className="deny red-text"> */}
+          <Link 
+          to={`/streams/delete/${stream.id}`}
+          className="waves-effect waves-light btn red">삭제</Link>
         </div>
       );
     }

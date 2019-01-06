@@ -2,12 +2,30 @@
 
 import React from 'react';
 import Modal from '../Modal';
+import history from '../../history'
 
 const StreamDelete = () => {
+	
+	const actions = (
+		<React.Fragment>
+			<button className="ui button negative">
+				삭제
+			</button>
+				<button className="ui button">
+				취소
+			</button>
+		</React.Fragment>
+	)
+	
 	return(
 		<div>
 			Stream Delete 
-			<Modal/> 
+			<Modal
+			title="Delete Stream"
+			content="정말로 삭제하시겠습니까?"
+			actions={actions}
+			onDismiss={() => history.push('/')}
+			/> 
 		</div>
 	);
 }
