@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
 
 class StreamList extends React.Component {
+  
   componentDidMount() {
     this.props.fetchStreams();
   }
@@ -56,7 +57,8 @@ class StreamList extends React.Component {
                     <span className="card-title">스트리밍 리스트</span>
 
                     <div className="col s12 m6" key={stream.id}>
-                      <h5>title: {stream.title}</h5>
+                      <Link to={`/streams/${stream.id}`}>
+                     <h3> title: {stream.title}</h3></Link>
                       <h6>description: {stream.description}</h6>
                       {this.renderAdmin(stream)}
                     </div>
