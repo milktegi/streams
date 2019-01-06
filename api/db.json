@@ -1,25 +1,9 @@
 {
   "streams": [
     {
-      "title": "안녕",
-      "description": "안경",
+      "title": "me streaming comp reuse!",
+      "description": "this is about refactoring!",
       "id": 1
-    },
-    {
-      "title": "너 지금 어디야",
-      "description": "지금 제주도야",
-      "id": 2
-    },
-    {
-      "title": "손 끝이 시리더니",
-      "description": "벌써 봄이 왔네",
-      "id": 3
-    },
-    {
-      "title": "I created this stream ",
-      "description": "this stream was created by me!",
-      "userId": "108322165637413036181",
-      "id": 4
     }
   ]
 }

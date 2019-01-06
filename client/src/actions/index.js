@@ -1,6 +1,9 @@
 // 상태 관리
-// axios 인스턴스 수입
+// axios 인스턴스
 import streams from '../apis/streams';
+
+// history 인스턴스 
+import history from '../history';
 
 import {
   SIGN_IN,
@@ -36,6 +39,10 @@ export const createStream = formValues => async (dispatch, getState) => {
     type: CREATE_STREAM,
     payload: response.data
   });
+  // immediately after successfully create stream, 
+  // navigate to user to '/'
+  history.push('/');
+
 };
 
 export const fetchStreams = () => async dispatch => {
@@ -55,8 +62,9 @@ export const fetchStream = id => async dispatch => {
 };
 
 export const editStream = (id, formValues) => async dispatch => {
-  const response = await streams.put(`/streams/${id}`, formValues);
+  const response = await streams.patch(`/streams/${id}`, formValues);
   dispatch({ type: EDIT_STREAM, payload: response.data });
+  history.push('/');
 };
 
 export const deleteStream = id => async dispatch => {

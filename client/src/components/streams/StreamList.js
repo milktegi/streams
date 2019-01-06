@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
 
 class StreamList extends React.Component {
@@ -13,15 +14,30 @@ class StreamList extends React.Component {
     if (stream.userId === this.props.currentUserId) {
       return (
         <div>
-          {/* <button className="approve green-text"> */}
-           <button className="waves-effect waves-light btn green">
+          <Link 
+          to={`/streams/edit/${stream.id}`}
+          className="waves-effect waves-light btn green">
             수정
-          </button>{' '}
-          
-          {/* <button className="deny red-text"> */}
-            <button className="waves-effect waves-light btn red">
-            삭제
-          </button>
+          </Link>{' '}
+          {/* <L className="deny red-text"> */}
+          <Link 
+          to={`/streams/delete/${stream.id}`}
+          className="waves-effect waves-light btn red">삭제</Link>
+        </div>
+      );
+    }
+  }
+
+  renderCreate() {
+    if (this.props.isSignedIn) {
+      return (
+        <div style={{ textAlign: 'right' }}>
+          <Link
+            to="/streams/new"
+            className="btn-floating btn-large waves-effect waves-light red"
+          >
+            <i className="material-icons">add</i>
+          </Link>
         </div>
       );
     }
@@ -36,8 +52,9 @@ class StreamList extends React.Component {
               <div className="card-content">
                 <div className="row">
                   <div className="col s12 m6">
-                    <i className="material-icons prefix">camera_roll</i>
+                    <i className="material-icons prefix">laptop_mac</i>
                     <span className="card-title">스트리밍 리스트</span>
+
                     <div className="col s12 m6" key={stream.id}>
                       <h5>title: {stream.title}</h5>
                       <h6>description: {stream.description}</h6>
@@ -56,6 +73,7 @@ class StreamList extends React.Component {
     return (
       <div>
         <h2>Streams</h2>
+        {this.renderCreate()}
         <div>{this.renderList()}</div>
       </div>
     );
@@ -65,7 +83,8 @@ class StreamList extends React.Component {
 const mapStateToProps = state => {
   return {
     streams: Object.values(state.streams),
-    currentUserId: state.auth.userId
+    currentUserId: state.auth.userId,
+    isSignedIn: state.auth.isSignedIn
   };
 };
 

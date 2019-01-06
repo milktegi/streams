@@ -1,13 +1,42 @@
-// 일단은 함수형으로 
+import _ from 'lodash'
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchStream, editStream } from '../../actions';
+import StreamForm from './StreamForm';
 
-const StreamEdit = () => {
-	return(
-		<div>
-			나는 streamEdit이당ㅎㅎㅎ 
-		</div>
-	)
+class StreamEdit extends React.Component {
+  componentDidMount() {
+    // this.props.fetchStream(this.props.match.params.id)
+    this.props.fetchStream(this.props.match.params.id);
+  }
+
+  onSubmit = formValues => {
+    // console.log(formValues);
+		this.props.editStream(this.props.match.params.id, formValues);
+  };
+
+  render() {
+    if (!this.props.stream) {
+      return <div>loading...</div>;
+    }
+    return (
+      <div>
+        <h5>Edit Stream</h5>
+        <StreamForm 
+				initialValues={_.pick(this.props.stream, 'title', 'description')}
+				onSubmit={this.onSubmit} />
+      </div>
+    );
+  }
 }
 
-export default StreamEdit;
+const mapStateToProps = (state, ownProps) => {
+  // console.log(ownProps);
+  return { stream: state.streams[ownProps.match.params.id] };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchStream, editStream }
+)(StreamEdit);
