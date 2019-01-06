@@ -18,7 +18,7 @@ const Header = () => {
 					<li><GoogleAuth/></li>	
           <li className="active"><Link to="/"></Link></li>
           <li><Link to="/streams/new">채널 생성</Link></li>
-          <li><Link to="/streams/edit">스트리밍 수정</Link></li>
+          <li><Link to="/streams/edit/:id">스트리밍 수정</Link></li>
           <li><Link to="/streams/delete">스트리밍 삭제</Link></li>
           <li><Link to="/streams/show">스트리밍 보기</Link></li>
           {/* <li><Link to="login.html">로그인</Link></li> */}
