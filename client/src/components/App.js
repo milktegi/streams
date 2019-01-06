@@ -3,7 +3,7 @@
 import React from 'react';
 
 // 라우팅 종속성 추가
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 // 렌더링 컴포넌트 수입
 import Header from './Header/Header';
@@ -20,11 +20,13 @@ const App = () => {
       <Router history={history}>
         <div>
           <Header />
+          <Switch>
           <Route path="/" exact component={StreamList} />
           <Route path="/streams/new" exact component={StreamCreate} />
           <Route path="/streams/edit/:id" exact component={StreamEdit} />
           <Route path="/streams/delete/:id" exact component={StreamDelete} />
           <Route path="/streams/:id" exact component={StreamShow} />
+          </Switch>
         </div>
       </Router>
     </div>
