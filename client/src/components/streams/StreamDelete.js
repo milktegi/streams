@@ -1,13 +1,15 @@
 // 일단은 함수형으로 
 
 import React from 'react';
+import Modal from '../Modal';
 
 const StreamDelete = () => {
 	return(
 		<div>
-			나는 stream 삭제이당ㅎㅎㅎ 
+			Stream Delete 
+			<Modal/> 
 		</div>
-	)
+	);
 }
 
 export default StreamDelete;
