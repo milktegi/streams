@@ -53,6 +53,7 @@ export const fetchStreams = () => async dispatch => {
   });
 };
 
+// edit & del 
 export const fetchStream = id => async dispatch => {
   const response = await streams.get(`/streams/${id}`);
   dispatch({
